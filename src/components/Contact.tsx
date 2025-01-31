@@ -1,0 +1,65 @@
+import Link from 'next/link'
+import React from 'react'
+
+// Icons
+import { FaPhone } from "react-icons/fa6";
+import { FaEnvelope } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa6";
+import { FaLinkedin } from "react-icons/fa6";
+import { FaFileArrowDown } from "react-icons/fa6";
+
+const Contact = ({scrollRef}) => {
+  return (
+    <section ref={scrollRef} className="py-8">
+      
+       <div className="flex flex-col items-center md:flex-row justify-between p-4 px-6  mx-auto md:max-w-7xl">
+        <div>
+          <h1 className="font-normal font-serif md:max-w-[50rem] py-4 text-4xl lg:text-6xl leading-[120%] md:leading-[150%]">
+            Get in <em className="italic">Touch</em>
+            <br />
+            with me.
+          </h1>
+        </div>
+        <div className=' bg-gray-200 h-[1px] md:h-60 w-full md:w-[1px]' />
+        <div>
+          <p className="mt-4 pb-8 text-gray-600 md:max-w-[35rem]  text-base md:text-lg lg:text-xl font-normal leading-[135%]">
+          Whether you have questions, inquires or just want to say hello, I&apos;d love to hear from you. Reach out using the below details.
+          </p>
+        </div>
+      </div>
+
+      <footer className='space-y-6 flex flex-col md:flex-row items-center md:justify-evenly border-t border-gray-300 w-full mt-4'>
+
+          <div className='mt-4 p-4 border border-gray-500 cursor-pointer'>
+            <Link href="mailto:sainirahul0802@gmail.com" className='flex items-center text-gray-600'><FaEnvelope className='mr-2' />sainirahul0802@gmail.com</Link>
+          </div>
+
+          <div className='bg-gray-200 h-[1px] md:h-20 w-full md:w-[1px]' />
+
+          <div className='p-4 border border-gray-500 cursor-pointer'>
+            
+            <Link href="tel:+12056431054" className='flex items-center text-gray-600'><FaPhone className='mr-2' />+1 205 643-1054</Link>
+          </div>
+
+          <div className=' bg-gray-200 h-[1px] md:h-20 w-full md:w-[1px]' />
+
+          <div className='p-4 border border-gray-500 cursor-pointer bg-indigo-500 text-white font-bold'>
+            <Link href="/Resume.pdf" download={true} target='_blank' className='flex items-center'><FaFileArrowDown className='mr-2' />Download Resume</Link>
+          </div>
+
+          <div className=' bg-gray-200 h-[1px] md:h-20 w-full md:w-[1px]' />
+
+          <div className='flex space-x-4'>
+              <Link href='https://www.linkedin.com/in/sainir02/' target='_blank' className='p-2 border border-gray-200 rounded-md'>
+                <FaLinkedin className='h-8 w-8 text-gray-600' />
+              </Link>
+              <Link href='https://github.com/RahulSaini02'  target='_blank' className='p-2 border border-gray-200 rounded-md'>
+                <FaGithub className='h-8 w-8 text-gray-600' />
+              </Link>
+          </div>
+        </footer>
+    </section>
+  )
+}
+
+export default Contact
