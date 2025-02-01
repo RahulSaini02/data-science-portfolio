@@ -1,6 +1,7 @@
 "use client"
 
 import Contact from "@/components/Contact";
+import About from "@/components/Home/About";
 import Certifications from "@/components/Home/Certifications";
 import Hero from "@/components/Home/Hero";
 import Skills from "@/components/Home/Skills";
@@ -25,6 +26,8 @@ export default function Home() {
       <Hero />
       {/* Skills Carsoul */}
       <Skills />
+      {/* About */}
+      <About />
       {/* Projects */}
       <TopProjects />
       {/* Certifications */}
