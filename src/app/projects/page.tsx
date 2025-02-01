@@ -1,17 +1,8 @@
-"use client"
-
-import { useRef } from "react";
-
 import Nav from "@/components/Nav";
 import Contact from "@/components/Contact";
 import ProjectsGrid from "@/components/Projects/ProjectsGrid";
 
 export default function Projects() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  const scrollToSection = () => {
-    sectionRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <div className="bg-white min-h-screen text-black">
@@ -27,11 +18,11 @@ export default function Projects() {
 
       {/* Text Content */}
       <div className="relative z-10 h-full text-center text-white">
-        <Nav scrollToSection={scrollToSection}/>
+        <Nav />
         <div className="mt-8 md:mt-12 lg:mt-20 font-serif">
           <h1 className="text-2xl md:text-5xl font-bold">Where Ideas Come to Life</h1> 
-          {/* 🚀 */}
-          <p className="text-lg md:text-xl mt-2">A collection of projects that bring ideas to life.</p>
+          {/* */}
+          <p className="text-lg md:text-xl mt-2">A collection of projects 🚀</p>
         </div>
       </div>
     </div>
@@ -39,7 +30,7 @@ export default function Projects() {
       {/* Projects Grid */}
       <ProjectsGrid />
       {/* Contact */}
-      <Contact scrollRef={sectionRef} />
+      <Contact />
     </div>
   );
 }

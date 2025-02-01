@@ -2,51 +2,42 @@ import Image from 'next/image'
 import React from 'react'
 import Link from 'next/link'
 
-type ProjectCardProps = {
-  slug: number;
-  title: string;
-  description: string;
-  imageSrc: string;
-  tag: string;
-  publishedDate: string;
-};
-
-const ProjectCard = ({slug, imageSrc, title, description, tag, publishedDate}: ProjectCardProps) => {
+const ProjectCard = ({project, author}) => {
   return (
-    <Link href={`/projects/${slug}`} className='transform transition-transform hover:scale-105'>
+    <Link href={`/projects/${project.slug}`} className='transform transition-transform hover:scale-105'>
       <div className='text-black flex flex-col space-y-4'>
         {/* Image */}
         <div className="relative min-h-56 w-full">
             <Image
-            src={imageSrc}
-            alt={title}
+            src={project.image}
+            alt={project.title}
             fill
             className="rounded-lg object-cover"
           />
-          <p className='p-1 px-2 bg-white/90 text-black text-xs rounded-full absolute top-3 left-3'>{tag}</p>
+          <p className='p-1 px-2 bg-white/90 text-black text-xs rounded-full absolute top-3 left-3'>{project.topics[0].title}</p>
         </div>
         {/* Content */}
       
         <div className="space-y-2">
-          <h3 className='text-base leading-wide text-gray-900 uppercase'>{title}</h3>
-          <p className="text-sm leading-relaxed text-gray-600 text-ellipsis text-justify">{description}</p>
+          <h3 className='text-base leading-wide text-gray-900 uppercase'>{project.title}</h3>
+          <p className="text-sm leading-relaxed text-gray-600 text-ellipsis line-clamp-4 text-justify">{project.context}</p>
         </div>
         <div className='flex justify-between items-center'>
           {/* Author Details */}
           <div className='flex items-center space-x-2'>
             <Image
-              src='/Portrait.jpg'
+              src={`${author.image}`}
               alt='Rahul Saini'
               height={30}
               width={30}
               className='rounded-full'
             />
             <div className='text-xs'>
-              <p>Rahul Saini</p>
+              <p>{author.name}</p>
             </div>
           </div>
           <div>
-            <p className='text-xs text-gray-600'>{publishedDate}</p>
+            <p className='text-xs text-gray-600'>{new Date(project.publishedAt).toLocaleDateString("en-US", {day: "numeric", month: "short", year: "numeric"})}</p>
           </div>
         </div>
       </div>

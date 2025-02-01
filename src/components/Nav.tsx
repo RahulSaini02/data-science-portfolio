@@ -1,10 +1,11 @@
+"use client";
+
 import Link from 'next/link'
 import React from 'react'
 import { usePathname } from "next/navigation";
 
-const Nav = ({scrollToSection}) => {
+const Nav = ({data}) => {
   const path = usePathname();
-  console.log(path)
 
   return (
     <nav className='border-b border-gray-300 min-h-14 z-10'>
@@ -18,8 +19,8 @@ const Nav = ({scrollToSection}) => {
           <Link href={path == "/projects" ? '/' : '/projects' }>
             <div className='inline-block transform transition-transform hover:scale-110'>{path == "/projects" ? 'Home' : 'Projects' }</div>
           </Link>
-          <div onClick={scrollToSection} className='inline-block transform transition-transform hover:scale-110'>Contact</div>
-          <Link href="/Resume.pdf" target='_blank' className={` ${path == "/projects" ? 'text-indigo-300' : 'text-indigo-500'} font-bold inline-block transform transition-transform hover:scale-110`}>Resume</Link>
+          <Link className='inline-block transform transition-transform hover:scale-110' href="#contact">Contact</Link>
+          <Link href={`${data.resume}`} target='_blank' className={` ${path == "/projects" ? 'text-indigo-400' : 'text-indigo-600'} font-bold inline-block transform transition-transform hover:scale-110`}>Resume</Link>
         </div>
       </div>
     </nav>

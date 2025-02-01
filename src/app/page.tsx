@@ -1,5 +1,3 @@
-"use client"
-
 import Contact from "@/components/Contact";
 import About from "@/components/Home/About";
 import Certifications from "@/components/Home/Certifications";
@@ -7,33 +5,40 @@ import Hero from "@/components/Home/Hero";
 import Skills from "@/components/Home/Skills";
 import TopProjects from "@/components/Home/TopProjects";
 import Nav from "@/components/Nav";
-import { useRef } from "react";
+
+import { getClient } from '@/sanity/lib/client';
+import { HOME_QUERY } from '@/sanity/lib/queries';
 
 
-
-export default function Home() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  const scrollToSection = () => {
-    sectionRef.current?.scrollIntoView({ behavior: "smooth" });
+async function getData() {
+  const client = getClient();
+  const data = await client.fetch(HOME_QUERY);
+  return {
+    props: {
+      data,
+    },
   };
+}
+
+export default async function Home() {
+  const {props} = await getData();
 
   return (
     <div className="bg-white min-h-screen text-black">
       {/* Navbar */}
-      <Nav scrollToSection={scrollToSection}/>
+      <Nav data={props.data.nav} />
       {/* Hero Section */}
-      <Hero />
+      <Hero data={props.data.hero} />
       {/* Skills Carsoul */}
-      <Skills />
+      <Skills data={props.data.skills} />
       {/* About */}
-      <About />
+      <About data={props.data.timeline} />
       {/* Projects */}
-      <TopProjects />
+      <TopProjects data={props.data.projects} author={props.data.hero} />
       {/* Certifications */}
-      <Certifications />
+      <Certifications data={props.data.certifications} />
       {/* Contact */}
-      <Contact scrollRef={sectionRef} />
+      <Contact data={props.data.contact} />
     </div>
   );
 }
