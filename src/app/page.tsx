@@ -1,5 +1,5 @@
 import Contact from "@/components/Contact";
-import About from "@/components/Home/About";
+// import About from "@/components/Home/About";
 import Certifications from "@/components/Home/Certifications";
 import Hero from "@/components/Home/Hero";
 import Skills from "@/components/Home/Skills";
@@ -32,9 +32,9 @@ export default async function Home() {
       {/* Skills Carsoul */}
       <Skills data={props.data.skills} />
       {/* About */}
-      <About data={props.data.timeline} />
+      {/* <About data={props.data.timeline} /> */}
       {/* Projects */}
-      <TopProjects data={props.data.projects} author={props.data.hero} />
+      <TopProjects data={props.data.projects} />
       {/* Certifications */}
       <Certifications data={props.data.certifications} />
       {/* Contact */}

@@ -27,10 +27,14 @@ export const HOME_QUERY = groq`{
     _id,
     title,
     context,
+    author-> {
+      name, 
+      "image": image.asset->url
+    },
     "slug": slug.current,
     "image": mainImage.asset -> url,
     featured,
-    topics[] -> { _id, title },
+    "topic": topics[0]->title,
     publishedAt,
     links,
     body
@@ -47,3 +51,60 @@ export const HOME_QUERY = groq`{
     socials[] -> { _id, title, link }
   }
 }`
+
+export const PROJECTS_QUERY = groq`{
+  "nav": *[_type == "profile"][0]{
+    "resume": resume.asset -> url,
+  },
+  "contact": *[_type == "profile"][0] {
+    email,
+    mobile,
+    "resume": resume.asset -> url,
+    socials[] -> { _id, title, link }
+  },
+  "projects": * [_type == "project"] | order( publishedAt desc ) {
+    _id,
+    title,
+    context,
+    author-> {
+      name, 
+      "image": image.asset->url
+    },
+    "slug": slug.current,
+    "image": mainImage.asset -> url,
+    featured,
+    "topic": topics[0]->title,
+    publishedAt,
+    links,
+    body
+  },
+}`
+
+export const PROJECT_QUERY = groq`{
+  "nav": *[_type == "profile"][0]{
+    "resume": resume.asset -> url,
+  },
+  "contact": *[_type == "profile"][0] {
+    email,
+    mobile,
+    "resume": resume.asset -> url,
+    socials[] -> { _id, title, link }
+  },
+  "project": *[_type == "project" && slug.current == $slug][0]{
+    _id,
+    title,
+    context,
+    author-> {
+      name, 
+      "image": image.asset->url
+    },
+    "slug": slug.current,
+    "projectImage": mainImage.asset->url,
+    featured,
+    "topic": topics[0]->title,
+    publishedAt,
+    links,
+    body,
+    "params": { "slug": slug.current }
+  }
+}`;

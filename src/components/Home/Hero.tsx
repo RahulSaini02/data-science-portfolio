@@ -11,7 +11,7 @@ const Hero = ({data}) => {
             value={data.intro}
             components={{
             block: {
-              normal: ({ children }) => <h1 className="font-bold font-serif md:max-w-[40rem] py-4 text-3xl md:text-[3rem] leading-[120%] md:leading-[150%]">{children}</h1>,
+              normal: ({ children }) => <h1 className="font-heading font-bold md:max-w-[40rem] py-4 text-3xl md:text-[3.5rem] leading-[120%] md:leading-[150%]">{children}</h1>,
             },
           }}
         />
@@ -20,7 +20,7 @@ const Hero = ({data}) => {
             value={data.about}
             components={{
             block: {
-              normal: ({ children }) => <p className="mt-4 text-gray-600 md:max-w-[45rem] pb-8 text-base md:text-lg font-normal leading-[135%]">{children}</p>,
+              normal: ({ children }) => <p className="mt-4 text-gray-600 md:max-w-[45rem] pb-8 text-base md:text-lg font-body leading-[135%]">{children}</p>,
             },
           }}
         />

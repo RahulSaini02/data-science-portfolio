@@ -1,14 +1,20 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const fontHeading = Playfair_Display({
+  weight: ['500'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-heading',
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const fontBody = Inter({
+  weight: ['300', '500'],
+  style: 'normal',
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-body',
 });
 
 
@@ -26,7 +32,7 @@ export default  function RootLayout({
   return (
     <html lang="en" className='hide-scrollbar min-h-screen'>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${fontHeading.variable} ${fontBody.variable} antialiased`}
       >
         {/* <body*
         className={`${fontHeading.variable} ${fontBody.variable} antialiased`}

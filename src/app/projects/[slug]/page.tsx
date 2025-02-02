@@ -1,23 +1,39 @@
-"use client";
-
 import React from 'react'
-import { useRef } from "react";
 
 import Nav from "@/components/Nav";
 import Contact from "@/components/Contact";
 import ProjectBlog from '@/components/Projects/ProjectBlog'
 
-export default function Project(){
-  const sectionRef = useRef<HTMLDivElement>(null);
-  
-  const scrollToSection = () => {
-    sectionRef.current?.scrollIntoView({ behavior: "smooth" });
+import { getClient } from '@/sanity/lib/client';
+import { PROJECT_QUERY } from '@/sanity/lib/queries';
+
+async function getData(slug) {
+
+  const client = getClient();
+  const data = await client.fetch(PROJECT_QUERY, {slug});
+
+  return {
+    props: {
+      data
+    },
   };
+}
+
+type Props = {
+  params: {
+    slug: string
+  }
+}
+
+
+export default async function Project({params: {slug}}: Props){
+  const {props} = await getData(slug);
+
   return (
     <section className='bg-white min-h-screen text-black'>
-      <Nav scrollToSection={scrollToSection}/>
-      <ProjectBlog />
-      <Contact scrollRef={sectionRef} />
+      <Nav data={props.data.nav} />
+      <ProjectBlog project={props.data.project} />
+      <Contact data={props.data.contact} />
     </section>
   )
 }

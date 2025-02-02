@@ -8,7 +8,7 @@ import Image from 'next/image';
 
 const Skills = ({data}) => {
   const carouselRef = useRef<HTMLDivElement>(null);
-  // useCarouselAnimation(carouselRef, { duration: 30, ease: "none", repeat: -1 });
+  useCarouselAnimation(carouselRef, { duration: 30, ease: "none", repeat: -1 });
 
   return (
     <section className='min-h-60 md:min-h-72 bg-gray-100 overflow-hidden w-full flex'>
