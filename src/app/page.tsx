@@ -13,32 +13,28 @@ import { HOME_QUERY } from '@/sanity/lib/queries';
 async function getData() {
   const client = getClient();
   const data = await client.fetch(HOME_QUERY);
-  return {
-    props: {
-      data,
-    },
-  };
+  return data;
 }
 
 export default async function Home() {
-  const {props} = await getData();
+  const data = await getData();
 
   return (
     <div className="bg-white min-h-screen text-black">
       {/* Navbar */}
-      <Nav data={props.data.nav} />
+      <Nav data={data.nav} />
       {/* Hero Section */}
-      <Hero data={props.data.hero} />
+      <Hero data={data.hero} />
       {/* Skills Carsoul */}
-      <Skills data={props.data.skills} />
+      <Skills data={data.skills} />
       {/* About */}
-      {/* <About data={props.data.timeline} /> */}
+      {/* <About data={data.timeline} /> */}
       {/* Projects */}
-      <TopProjects data={props.data.projects} />
+      <TopProjects data={data.projects} />
       {/* Certifications */}
-      <Certifications data={props.data.certifications} />
+      <Certifications data={data.certifications} />
       {/* Contact */}
-      <Contact data={props.data.contact} />
+      <Contact data={data.contact} />
     </div>
   );
 }

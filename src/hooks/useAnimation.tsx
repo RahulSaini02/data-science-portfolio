@@ -7,26 +7,28 @@ export const useCarouselAnimation = (
 ) => {
   useEffect(() => {
     const carousel = carouselRef.current;
+    if (!carousel) return;
 
-    if (carousel) {
-      // Duplicate carousel items for seamless looping
-      const items = Array.from(carousel.children) as HTMLElement[];
-      items.forEach((item) => {
-        const clone = item.cloneNode(true) as HTMLElement;
-        carousel.appendChild(clone);
-      });
+    // Prevent multiple duplications by checking if items are already cloned
+    if (carousel.dataset.duplicated) return;
+    carousel.dataset.duplicated = "true"; // Mark as duplicated
 
-      // Create GSAP animation
-      const animation = gsap.to(carousel, {
-        x: "-50%", // Adjust based on the content width
-        duration: options.duration,
-        ease: options.ease,
-        repeat: options.repeat,
-      });
+    // Clone elements for seamless looping
+    const items = Array.from(carousel.children) as HTMLElement[];
+    items.forEach((item) => {
+      const clone = item.cloneNode(true) as HTMLElement;
+      carousel.appendChild(clone);
+    });
 
-      return () => {
-        animation.kill(); // Cleanup animation on unmount
-      };
-    }
-  }, [carouselRef, options]);
+    // Create GSAP animation
+    const animation = gsap.to(carousel, {
+      x: "-50%", // Adjust based on content width
+      duration: options.duration,
+      ease: options.ease,
+      repeat: options.repeat,
+    });
+    return () => {
+      animation.kill(); // Cleanup animation on unmount
+    };
+  }, [carouselRef]);
 };

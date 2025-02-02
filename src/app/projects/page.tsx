@@ -8,16 +8,12 @@ import { PROJECTS_QUERY } from '@/sanity/lib/queries';
 async function getData() {
   const client = getClient();
   const data = await client.fetch(PROJECTS_QUERY);
-  return {
-    props: {
-      data,
-    },
-  };
+  return data;
 }
 
 export default async function Projects() {
 
-  const {props} = await getData();
+  const data = await getData();
 
   return (
     <div className="bg-white min-h-screen text-black">
@@ -33,7 +29,7 @@ export default async function Projects() {
 
       {/* Text Content */}
       <div className="relative z-10 h-full text-center text-white">
-        <Nav data={props.data.nav} />
+        <Nav data={data.nav} />
         <div className="mt-8 md:mt-12 lg:mt-20 font-serif">
           <h1 className="text-2xl md:text-5xl font-bold">Where Ideas Come to Life</h1> 
           {/* */}
@@ -42,9 +38,9 @@ export default async function Projects() {
       </div>
     </div>      
       {/* Projects Grid */}
-      <ProjectsGrid projects={props.data.projects} />
+      <ProjectsGrid projects={data.projects} />
       {/* Contact */}
-      <Contact data={props.data.contact} />
+      <Contact data={data.contact} />
     </div>
   );
 }

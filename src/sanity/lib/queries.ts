@@ -108,3 +108,7 @@ export const PROJECT_QUERY = groq`{
     "params": { "slug": slug.current }
   }
 }`;
+
+export const ALL_PROJECTS_SLUG = groq`*[_type == "project"]{
+  "slug": slug.current
+}`;
