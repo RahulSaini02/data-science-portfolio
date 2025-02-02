@@ -21,7 +21,8 @@ const Skills = ({data}) => {
                 <Image 
                   src={skill.image}
                   alt={skill.skill}
-                  layout='fill'
+                  fill
+                  sizes="(max-width: 600px) 100vw, 50vw"
                   objectFit='contain'
                 />
               </div>

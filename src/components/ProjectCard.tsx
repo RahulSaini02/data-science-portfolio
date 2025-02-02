@@ -12,6 +12,10 @@ const ProjectCard = ({project}) => {
             src={project.image}
             alt={project.title}
             fill
+            sizes="(max-width: 600px) 100vw, 50vw"
+            priority
+            placeholder = 'blur'
+            blurDataURL='iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMMN7ldDwAENwHnfg9UxAAAAABJRU5ErkJggg=='
             className="rounded-lg object-cover"
           />
           <p className='p-1 px-2 bg-white/90 text-primary text-xs rounded-full absolute top-3 left-3 font-body font-thin'>{project.topic}</p>

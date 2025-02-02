@@ -35,7 +35,11 @@ const ProjectBlog = ({project}) => {
           <Image className='object-contain'
             src={`${project.projectImage}`}
             fill
+            sizes="(max-width: 600px) 100vw, 50vw"
             alt={`${project.title}`}
+            placeholder = 'blur'
+            blurDataURL='iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMMN7ldDwAENwHnfg9UxAAAAABJRU5ErkJggg=='
+            priority
           />
         </div>
         {/* Author, Publish & GitHub */}

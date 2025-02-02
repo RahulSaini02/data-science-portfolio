@@ -27,6 +27,10 @@ export const RichTextComponents = {
             src={urlFor(value)}
             alt="Project Image"
             fill
+            sizes="(max-width: 600px) 100vw, 50vw"
+            priority
+            placeholder = 'blur'
+            blurDataURL='iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMMN7ldDwAENwHnfg9UxAAAAABJRU5ErkJggg=='
             className="object-contain"
           />
         </div>

@@ -14,24 +14,20 @@ async function getData(slug) {
   return data;
 }
 
+// Fetch all project slugs at build time
 export async function generateStaticParams() {
   const client = getClient();
   const slugs = await client.fetch(ALL_PROJECTS_SLUG);
-  
+
+  // Generate paths based on slugs
   return slugs.map((item: { slug: string }) => ({
     slug: item.slug,
   }));
 }
 
-type Props = {
-  params: {
-    slug: string
-  }
-}
-
-export default async function Project({params: {slug}}: Props){
-  const data = await getData(slug);
-
+export default async function Project({ params }: { params: Promise<{ slug: string }> }){
+  const slug = (await params).slug;
+  const data = await getData(slug)
   return (
     <section className='bg-white min-h-screen text-black'>
       <Nav data={data.nav} />

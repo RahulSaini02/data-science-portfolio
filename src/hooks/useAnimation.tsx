@@ -30,5 +30,5 @@ export const useCarouselAnimation = (
     return () => {
       animation.kill(); // Cleanup animation on unmount
     };
-  }, [carouselRef]);
+  }, [carouselRef, options]);
 };

@@ -32,7 +32,10 @@ const Hero = ({data}) => {
           <Image
             src={`${data.image}`}
             alt={`${data.name}`}
-            layout="fill"
+            fill
+            sizes="(max-width: 600px) 100vw, 50vw"
+            placeholder = 'blur'
+            blurDataURL='iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMMN7ldDwAENwHnfg9UxAAAAABJRU5ErkJggg=='
             objectFit="cover"
             priority
           />
