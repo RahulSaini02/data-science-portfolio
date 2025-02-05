@@ -24,7 +24,7 @@ const ProjectBlog = ({project}) => {
   }, [project]);
 
     return (
-      <section className='pb-28 p-4 px-6 md:max-w-7xl mx-auto space-y-2 bg-white min-h-screen text-primary'>
+      <section className='pb-8 md:pb-16 p-4 px-6 md:max-w-7xl mx-auto space-y-2 bg-white min-h-screen text-primary'>
         {/* Project Header */}
         <div className='space-y-4 my-4 lg:my-12'>
           <h3 className='text-xl md:text-3xl lg:text-5xl font-heading font-bold tracking-wide text-left'>{project.title}</h3>
