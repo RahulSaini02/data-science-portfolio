@@ -24,11 +24,11 @@ const ProjectBlog = ({project}) => {
   }, [project]);
 
     return (
-      <section className='pb-28 p-4 px-6 md:max-w-7xl mx-auto space-y-2 bg-white min-h-screen text-primary '>
+      <section className='pb-28 p-4 px-6 md:max-w-7xl mx-auto space-y-2 bg-white min-h-screen text-primary'>
         {/* Project Header */}
         <div className='space-y-4 my-4 lg:my-12'>
-          <h3 className='text-xl md:text-3xl lg:text-5xl font-heading font-bold tracking-wide'>{project.title}</h3>
-          <p className='text-primary/60 text-sm md:text-lg lg:text-xl py-2 font-body font-normal'>{project.context}</p>
+          <h3 className='text-xl md:text-3xl lg:text-5xl font-heading font-bold tracking-wide text-left'>{project.title}</h3>
+          <p className='text-primary/80 text-sm md:text-lg lg:text-xl py-2 font-body font-thin text-justify'>{project.context}</p>
         </div>
         {/* Project Image */}
         <div className='relative min-h-72 md:min-h-64 lg:min-h-[30rem] w-full'>
@@ -44,7 +44,6 @@ const ProjectBlog = ({project}) => {
         </div>
         {/* Author, Publish & GitHub */}
         <div className='flex items-center justify-between w-full py-2 lg:py-8 text-primary font-body'>
-        
             <div className='flex flex-col space-y-2 md:flex-row md:space-x-8 w-1/2'>
               <div className='flex items-center space-x-2'>
                 <Image
@@ -54,13 +53,13 @@ const ProjectBlog = ({project}) => {
                   width={40}
                   className='rounded-full'
                 />
-                <div className='font-bold'>
+                <div className=''>
                   <p>{project.author.name}</p>
                 </div>
               </div>
-            <div className='text-sm md:text-base font-semibold'>
+            <div className='text-sm md:text-base'>
               <p>Published On</p>
-              <p>{new Date(project.publishedAt).toLocaleDateString("en-US", {
+              <p className='font-thin'>{new Date(project.publishedAt).toLocaleDateString("en-US", {
                 day: "numeric",
                 month: "long",
                 year: "numeric"
@@ -74,15 +73,15 @@ const ProjectBlog = ({project}) => {
                   key={link._key} 
                   href={link.url} 
                   target='_blank' 
-                  className='group flex space-x-2 border border-gray-600 hover:border-indigo-600 hover:text-gray-100 hover:bg-indigo-600 hover:shadow-lg ease-in-out transition-all duration-125 rounded-md cursor-pointer p-2 items-center justify-center'
+                  className='group flex space-x-2 border border-primary/60 hover:border-secondary hover:text-primary/10 hover:bg-secondary hover:shadow-lg ease-in-out transition-all duration-125 rounded-md cursor-pointer p-2 items-center justify-center'
                 >
                   {
                     link.label == "GitHub" ? 
-                      <FaGithub className='text-gray-600 group-hover:text-gray-100' /> 
+                      <FaGithub className='text-primary/60 group-hover:text-primary/10' /> 
                     : 
-                      <FaLink className='text-gray-600 group-hover:text-gray-100' />
+                      <FaLink className='text-primary/60 group-hover:text-primary/10' />
                   }
-                  <p className='text-gray-800 text-center group-hover:text-gray-100'>{link.label}</p>
+                  <p className='text-primary text-center group-hover:text-primary/10'>{link.label}</p>
                 </Link>
               ))}
             </div>
@@ -90,10 +89,10 @@ const ProjectBlog = ({project}) => {
         
         <article className='flex flex-col md:flex-row space-between gap-10 lg:gap-20'>
           {/* Table of Contents */}
-          <div className='space-y-4 my-8 md:w-1/3'>
+          <div className='space-y-4 mt-8 md:w-1/3'>
             {
               headings.map(content => (
-                  <Link key={content.id} href={`#${content.id}`}  className='flex items-center justify-between border-spacing-4 pb-3 border-b border-gray-400 cursor-pointer'>
+                  <Link key={content.id} href={`#${content.id}`}  className='flex items-center justify-between border-spacing-4 pb-3 border-b border-primary/60 cursor-pointer'>
                     <h3 className='font-bold text-sm font-heading'>{content.text}</h3>
                     <div className='flex'>
                       <FaArrowRight className='hidden md:inline' />

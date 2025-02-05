@@ -11,7 +11,7 @@ const fontHeading = Playfair_Display({
 
 const fontBody = Inter({
   weight: ['300', '500'],
-  style: 'normal',
+  style: ['normal', 'italic'],
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-body',

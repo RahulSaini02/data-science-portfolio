@@ -22,7 +22,7 @@ export const RichTextComponents = {
   types: {
     image: ({value}: ImageType) => {
       return (
-        <div className="relative w-full h-96 m-2 lg:m-4 mx-auto">
+        <div className="relative w-full h-72 md:h-96 my-2 lg:my-4 mx-auto">
           <Image 
             src={urlFor(value)}
             alt="Project Image"
@@ -31,7 +31,7 @@ export const RichTextComponents = {
             priority
             placeholder = 'blur'
             blurDataURL='iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMMN7ldDwAENwHnfg9UxAAAAABJRU5ErkJggg=='
-            className="object-contain"
+            objectFit="contain"
           />
         </div>
       )
@@ -39,32 +39,32 @@ export const RichTextComponents = {
   },
   list : {
     bullet: ({children}: BlockType) => (
-      <ul className="ml-10 py-4 list-disc space-y-2 font-body">{children}</ul>
+      <ul className="ml-10 space-y-4 py-2 list-disc font-body text-left">{children}</ul>
     ),
     number: ({children}: BlockType) => (
-      <ol className="ml-lg list-decimal font-body">{children}</ol>
+      <ol className="ml-lg list-decimal font-body text-left">{children}</ol>
     ),
   },
   block: {
     h1: ({children}: BlockType) => (
-      <h1 className="text-5xl font-bold mt-6 scroll-mt-20 font-heading">{children}</h1>
+      <h1 className="text-4xl md:text-5xl font-bold my-8 py-4 scroll-mt-20 font-heading text-left">{children}</h1>
     ),
     h2: ({ children, node }: BlockType) => {
       const id = node?._key || children?.toString().replace(/\s+/g, "-").toLowerCase();
       return (
-        <h2 id={id} className="text-4xl font-bold mt-6 scroll-mt-20 font-heading">
+        <h2 id={id} className="text-3xl md:text-4xl font-bold my-8 py-4 scroll-mt-20 font-heading text-left">
           {children}
         </h2>
       );
     },
     h3: ({children}: BlockType) => (
-      <h3 className="text-3xl font-bold mt-6 scroll-mt-20 font-body">{children}</h3>
+      <h3 className="text-2xl md:text-3xl font-bold my-8 scroll-mt-20 font-body text-left">{children}</h3>
     ),
     h4: ({children}: BlockType) => (
-      <h4 className="text-2xl font-bold mt-6 scroll-mt-20 font-body">{children}</h4>
+      <h4 className="text-xl md:text-2xl font-bold my-8 scroll-mt-20 font-body text-left">{children}</h4>
     ),
     blockquote: ({children}: BlockType) => (
-      <blockquote className="border-l-primary border-l-4 pl-5 py-4 my-5 font-body font-thin">{children}</blockquote>
+      <blockquote className="border-l-primary border-l-4 pl-5 py-4 my-5 text-primary/60 font-body font-thin text-left">{children}</blockquote>
     ),
   },
   marks: {
