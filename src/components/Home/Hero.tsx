@@ -15,12 +15,11 @@ const Hero = ({data}) => {
             },
           }}
         />
-
         <PortableText
             value={data.about}
             components={{
             block: {
-              normal: ({ children }) => <p className="mt-4 text-gray-600 md:max-w-[45rem] pb-8 text-base md:text-lg font-body leading-[135%]">{children}</p>,
+              normal: ({ children }) => <p className="mt-4 text-primary/60 md:max-w-[45rem] pb-8 text-base md:text-lg font-body font-thin text-justify leading-[135%]">{children}</p>,
             },
           }}
         />

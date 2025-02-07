@@ -4,8 +4,8 @@ import Link from 'next/link'
 
 const ProjectCard = ({project}) => {
   return (
-    <Link href={`/projects/${project.slug}`} className='transform transition-transform hover:scale-105'>
-      <div className='text-black flex flex-col space-y-4'>
+    <Link href={`/projects/${project.slug}`} className='transform transition-transform hover:scale-105 hover:shadow-lg md:p-2 rounded-lg'>
+      <div className='text-primary flex flex-col space-y-4'>
         {/* Image */}
         <div className="relative min-h-56 w-full">
             <Image
