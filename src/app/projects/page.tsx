@@ -2,8 +2,10 @@ import Nav from "@/components/Nav";
 import Contact from "@/components/Contact";
 import ProjectsGrid from "@/components/Projects/ProjectsGrid";
 
-import { getClient } from '@/sanity/lib/client';
-import { PROJECTS_QUERY } from '@/sanity/lib/queries';
+import { getClient } from "@/sanity/lib/client";
+import { PROJECTS_QUERY } from "@/sanity/lib/queries";
+
+export const revalidate = 3600; // revalidate at most every hour
 
 async function getData() {
   const client = getClient();
@@ -12,31 +14,34 @@ async function getData() {
 }
 
 export default async function Projects() {
-
   const data = await getData();
 
   return (
     <div className="bg-white min-h-screen text-black">
       <div className="relative w-full h-[250px] lg:h-[350px] text-white">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center z-0"
-        style={{ backgroundImage: "url('/Banner/banner-1.jpg')" }}
-      ></div>
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center z-0"
+          style={{ backgroundImage: "url('/Banner/banner-1.jpg')" }}
+        ></div>
 
-      {/* Black Overlay */}
-      <div className="absolute inset-0 bg-black opacity-50"></div>
+        {/* Black Overlay */}
+        <div className="absolute inset-0 bg-black opacity-50"></div>
 
-      {/* Text Content */}
-      <div className="relative z-10 h-full text-center text-white">
-        <Nav data={data.nav} />
-        <div className="mt-8 md:mt-12 lg:mt-20 font-serif">
-          <h1 className="text-2xl md:text-5xl font-bold">Where Ideas Come to Life</h1> 
-          {/* */}
-          <p className="text-lg md:text-xl mt-2">A collection of projects 🚀</p>
+        {/* Text Content */}
+        <div className="relative z-10 h-full text-center text-white">
+          <Nav data={data.nav} />
+          <div className="mt-8 md:mt-12 lg:mt-20 font-serif">
+            <h1 className="text-2xl md:text-5xl font-bold">
+              Where Ideas Come to Life
+            </h1>
+            {/* */}
+            <p className="text-lg md:text-xl mt-2">
+              A collection of projects 🚀
+            </p>
+          </div>
         </div>
       </div>
-    </div>      
       {/* Projects Grid */}
       <ProjectsGrid projects={data.projects} />
       {/* Contact */}

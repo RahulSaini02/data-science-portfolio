@@ -17,21 +17,21 @@ const Contact = ({data}) => {
         </div>
         <div className=' bg-gray-200 h-[1px] md:h-60 w-full md:w-[1px]' />
         <div>
-          <p className="mt-4 md:mt-0 text-primary/60 md:max-w-[35rem]  text-base md:text-lg lg:text-xl font-body font-thin leading-[135%]">
+          <p className="mt-4 md:mt-0 text-primary/80 md:max-w-[35rem]  text-base md:text-lg lg:text-xl font-body leading-[135%]">
           Whether you have questions, inquires or just want to say hello, I&apos;d love to hear from you. Reach out using the below details.
           </p>
         </div>
       </div>
 
-      <footer className='space-y-6 md:space-y-0  flex flex-col md:flex-row items-center md:justify-evenly border-t border-primary/30 w-full mt-4 py-4 font-body text-primary/60'>
+      <footer className='space-y-6 md:space-y-0  flex flex-col md:flex-row items-center md:justify-evenly border-t border-primary/30 w-full mt-4 py-4 font-body text-primary/80'>
           <div className='p-4 border border-primary/50 cursor-pointer group hover:border-secondary rounded-md'>
-            <Link href={`mailto:${data.email}`} className='flex items-center text-primary/60 group-hover:text-secondary'><FaEnvelope className='mr-2' />{data.email}</Link>
+            <Link href={`mailto:${data.email}`} className='flex items-center text-primary/80 group-hover:text-secondary'><FaEnvelope className='mr-2' />{data.email}</Link>
           </div>
 
           <div className='bg-gray-200 h-[1px] md:h-20 w-full md:w-[1px]' />
 
           <div className='p-4 border border-primary/50 hover:border-secondary group cursor-pointer rounded-md'> 
-            <Link href={`tel:${data.mobile}`} className='flex items-center text-primary/60 group-hover:text-secondary'><FaPhone className='mr-2' />{data.mobile}</Link>
+            <Link href={`tel:${data.mobile}`} className='flex items-center text-primary/80 group-hover:text-secondary'><FaPhone className='mr-2' />{data.mobile}</Link>
           </div>
 
           <div className=' bg-gray-200 h-[1px] md:h-20 w-full md:w-[1px]' />
@@ -47,7 +47,7 @@ const Contact = ({data}) => {
               data.socials.map(social => (
                   <Link key={social._id} href={`${social.link}`} target='_blank' className='group p-2 border border-primary/50 hover:border-secondary rounded-md transition-all ease-in-out duration-150'>
                     {
-                      social.title == "LinkedIn" ?  <FaLinkedin className='h-8 w-8 text-primary/60 group-hover:text-secondary' /> : <FaGithub className='h-8 w-8 text-primary/60 group-hover:text-secondary' />
+                      social.title == "LinkedIn" ?  <FaLinkedin className='h-8 w-8 text-primary/80 group-hover:text-secondary' /> : <FaGithub className='h-8 w-8 text-primary/80 group-hover:text-secondary' />
                     }
                   </Link>
               ))

@@ -1,25 +1,33 @@
-import Image from 'next/image'
-import React from 'react'
-import { PortableText } from '@portabletext/react';
+import Image from "next/image";
+import React from "react";
+import { PortableText } from "@portabletext/react";
 
-const Hero = ({data}) => {
+const Hero = ({ data }) => {
   return (
-     <section className="flex flex-col-reverse md:flex-row items-center justify-between p-4 px-6 py-12 md:py-24 mx-auto md:max-w-7xl">
+    <section className="flex flex-col-reverse md:flex-row items-center justify-between p-4 px-6 py-12 md:py-24 mx-auto md:max-w-7xl">
       {/* Text Content */}
       <div className="text-center md:text-left">
         <PortableText
-            value={data.intro}
-            components={{
+          value={data.intro}
+          components={{
             block: {
-              normal: ({ children }) => <h1 className="font-heading font-bold md:max-w-[40rem] py-4 text-3xl md:text-[3.5rem] leading-[120%] md:leading-[150%]">{children}</h1>,
+              normal: ({ children }) => (
+                <h1 className="font-heading font-bold md:max-w-[40rem] py-4 text-3xl md:text-[3.5rem] leading-[120%] md:leading-[150%]">
+                  {children}
+                </h1>
+              ),
             },
           }}
         />
         <PortableText
-            value={data.about}
-            components={{
+          value={data.about}
+          components={{
             block: {
-              normal: ({ children }) => <p className="mt-4 text-primary/60 md:max-w-[45rem] pb-8 text-base md:text-lg font-body font-thin text-justify leading-[135%]">{children}</p>,
+              normal: ({ children }) => (
+                <p className="mt-4 text-primary/80 font-body md:max-w-[45rem] pb-8 text-base md:text-lg text-left md:text-justify leading-[135%]">
+                  {children}
+                </p>
+              ),
             },
           }}
         />
@@ -33,15 +41,15 @@ const Hero = ({data}) => {
             alt={`${data.name}`}
             fill
             sizes="(max-width: 600px) 100vw, 50vw"
-            placeholder = 'blur'
-            blurDataURL='iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMMN7ldDwAENwHnfg9UxAAAAABJRU5ErkJggg=='
-            objectFit="cover"
+            placeholder="blur"
+            blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMMN7ldDwAENwHnfg9UxAAAAABJRU5ErkJggg=="
+            className="object-cover"
             priority
           />
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

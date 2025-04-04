@@ -6,9 +6,10 @@ import Skills from "@/components/Home/Skills";
 import TopProjects from "@/components/Home/TopProjects";
 import Nav from "@/components/Nav";
 
-import { getClient } from '@/sanity/lib/client';
-import { HOME_QUERY } from '@/sanity/lib/queries';
+import { getClient } from "@/sanity/lib/client";
+import { HOME_QUERY } from "@/sanity/lib/queries";
 
+export const revalidate = 3600;
 
 async function getData() {
   const client = getClient();
